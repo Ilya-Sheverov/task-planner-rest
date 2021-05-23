@@ -1,10 +1,10 @@
-package com.github.sheverov.ilya.taskplannerrest;
+package com.github.sheverov.ilya.taskplannerrest.service.dto;
 
 import com.github.sheverov.ilya.taskplannerrest.converter.dto.PersonToPersonDtoConverter;
 import com.github.sheverov.ilya.taskplannerrest.converter.dto.PersonToPersonWithTasksDtoConverter;
 import com.github.sheverov.ilya.taskplannerrest.database.PersonRepository;
-import com.github.sheverov.ilya.taskplannerrest.dto.person.PersonDto;
-import com.github.sheverov.ilya.taskplannerrest.dto.person.PersonWithTasksDto;
+import com.github.sheverov.ilya.taskplannerrest.dto.person.PersonDTO;
+import com.github.sheverov.ilya.taskplannerrest.dto.person.PersonWithTasksDTO;
 import com.github.sheverov.ilya.taskplannerrest.entity.Person;
 import java.util.List;
 import java.util.Optional;
@@ -30,19 +30,19 @@ public class PersonDTOService {
         this.personWithTasksDtoConverter = personWithTasksDtoConverter;
     }
 
-    public List<PersonDto> getPersonDTOs() {
+    public List<PersonDTO> getPersonDTOs() {
         return personToPersonDtoConverter.convert(personRepository.findAll());
     }
 
-    public List<PersonWithTasksDto> getPersonWithTasksDTOs() {
+    public List<PersonWithTasksDTO> getPersonWithTasksDTOs() {
         return personWithTasksDtoConverter.convert(personRepository.findAll());
     }
 
-    public PersonDto getPersonDtoById(Integer id) {
+    public PersonDTO getPersonDtoById(Integer id) {
         Optional<Person> personOptional = personRepository.findById(id);
         return personToPersonDtoConverter.convert(personOptional.get());
     }
-    public PersonWithTasksDto getPersonWithTasksDtoById(Integer id) {
+    public PersonWithTasksDTO getPersonWithTasksDtoById(Integer id) {
         Optional<Person> personOptional = personRepository.findById(id);
         return personWithTasksDtoConverter.convert(personOptional.get());
     }

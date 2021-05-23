@@ -6,7 +6,7 @@ import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain = true)
-public class PersonDto {
+public class PersonDTO {
 
     private Integer personId;
     private String lastName;

@@ -1,6 +1,6 @@
 package com.github.sheverov.ilya.taskplannerrest.converter.dto;
 
-import com.github.sheverov.ilya.taskplannerrest.dto.person.PersonWithTasksDto;
+import com.github.sheverov.ilya.taskplannerrest.dto.person.PersonWithTasksDTO;
 import com.github.sheverov.ilya.taskplannerrest.entity.Person;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class PersonToPersonWithTasksDtoConverter {
 
-    public PersonWithTasksDto convert(Person person) {
-        PersonWithTasksDto personWithTasksDto = new PersonWithTasksDto();
+    public PersonWithTasksDTO convert(Person person) {
+        PersonWithTasksDTO personWithTasksDto = new PersonWithTasksDTO();
         personWithTasksDto
             .setPersonId(person.getPersonId())
             .setLastName(person.getLastName())
@@ -21,7 +21,7 @@ public class PersonToPersonWithTasksDtoConverter {
         return personWithTasksDto;
     }
 
-    public List<PersonWithTasksDto> convert(List<Person> persons) {
+    public List<PersonWithTasksDTO> convert(List<Person> persons) {
         return persons.stream().map(this::convert).collect(Collectors.toList());
     }
 

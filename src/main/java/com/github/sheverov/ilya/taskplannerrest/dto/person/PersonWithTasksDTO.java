@@ -9,7 +9,7 @@ import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain = true)
-public class PersonWithTasksDto {
+public class PersonWithTasksDTO {
 
     private Integer personId;
     private String lastName;

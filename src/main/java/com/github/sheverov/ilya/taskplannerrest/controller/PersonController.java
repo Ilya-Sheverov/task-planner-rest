@@ -1,8 +1,8 @@
 package com.github.sheverov.ilya.taskplannerrest.controller;
 
-import com.github.sheverov.ilya.taskplannerrest.PersonDTOService;
-import com.github.sheverov.ilya.taskplannerrest.dto.person.PersonDto;
-import com.github.sheverov.ilya.taskplannerrest.dto.person.PersonWithTasksDto;
+import com.github.sheverov.ilya.taskplannerrest.service.dto.PersonDTOService;
+import com.github.sheverov.ilya.taskplannerrest.dto.person.PersonDTO;
+import com.github.sheverov.ilya.taskplannerrest.dto.person.PersonWithTasksDTO;
 import com.github.sheverov.ilya.taskplannerrest.entity.Person;
 import java.util.List;
 import java.util.Map;
@@ -26,12 +26,12 @@ public class PersonController {
     public Map<String, Object> getPersons(
         @RequestParam(defaultValue = "false") boolean includingTasks) {
         if (includingTasks) {
-            List<PersonWithTasksDto> personWithTasksDTOs = personDTOService
+            List<PersonWithTasksDTO> personWithTasksDTOS = personDTOService
                 .getPersonWithTasksDTOs();
-            return Map.of("persons", personWithTasksDTOs);
+            return Map.of("persons", personWithTasksDTOS);
         } else {
-            List<PersonDto> personDTOs = personDTOService.getPersonDTOs();
-            return Map.of("persons", personDTOs);
+            List<PersonDTO> personDTOS = personDTOService.getPersonDTOs();
+            return Map.of("persons", personDTOS);
         }
     }
 
@@ -39,11 +39,11 @@ public class PersonController {
     public Map<String, Object> getPerson(@PathVariable Integer personId,
         @RequestParam(defaultValue = "false") boolean includingTasks) {
         if (includingTasks) {
-            PersonWithTasksDto personWithTasksDto = personDTOService
+            PersonWithTasksDTO personWithTasksDto = personDTOService
                 .getPersonWithTasksDtoById(personId);
             return Map.of("person", personWithTasksDto);
         } else {
-            PersonDto personDto = personDTOService.getPersonDtoById(personId);
+            PersonDTO personDto = personDTOService.getPersonDtoById(personId);
             return Map.of("person", personDto);
         }
     }
