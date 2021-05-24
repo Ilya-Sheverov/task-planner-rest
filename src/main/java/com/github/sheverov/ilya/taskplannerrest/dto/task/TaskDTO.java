@@ -1,5 +1,6 @@
 package com.github.sheverov.ilya.taskplannerrest.dto.task;
 
+import com.github.sheverov.ilya.taskplannerrest.dto.person.PersonDTO;
 import com.github.sheverov.ilya.taskplannerrest.entity.Person;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class TaskDTO {
     private Timestamp startDate;
     private Timestamp dueDate;
     private String status;
-    private List<Person> assignees = new ArrayList<>();
+    private List<PersonDTO> assignees = new ArrayList<>();
     private Timestamp version;
 
 }

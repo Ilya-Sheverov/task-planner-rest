@@ -4,10 +4,14 @@ import com.github.sheverov.ilya.taskplannerrest.dto.task.TaskDTO;
 import com.github.sheverov.ilya.taskplannerrest.entity.Task;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class TaskToTaskDTOConverter {
+
+    @Autowired
+    PersonToPersonDtoConverter personDtoConverter;
 
     public TaskDTO convert(Task task) {
         TaskDTO taskDTO = new TaskDTO();
@@ -18,7 +22,7 @@ public class TaskToTaskDTOConverter {
             .setStartDate(task.getStartDate())
             .setDueDate(task.getDueDate())
             .setStatus(task.getStatus())
-            .setAssignees(task.getAssignees())
+            .setAssignees(personDtoConverter.convert(task.getAssignees()))
             .setVersion(task.getVersion());
         return taskDTO;
     }

@@ -1,9 +1,11 @@
 package com.github.sheverov.ilya.taskplannerrest.dto.task;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.github.sheverov.ilya.taskplannerrest.dto.person.PersonIdentifyingDTO;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data

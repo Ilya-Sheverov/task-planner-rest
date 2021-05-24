@@ -35,7 +35,7 @@ public class TaskController {
     }
 
     @PostMapping("/tasks")
-    public void createTask(@RequestBody TaskCreatingDTO taskDTO) {
+    public void createTask(@RequestBody TaskCreatingDTO taskDTO){
         taskDTOService.createTask(taskDTO);
     }
 }
