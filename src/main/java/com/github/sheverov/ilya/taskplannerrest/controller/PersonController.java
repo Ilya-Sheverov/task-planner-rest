@@ -22,7 +22,7 @@ public class PersonController {
     @Autowired
     PersonDTOService personDTOService;
 
-    @GetMapping(path = "/persons")
+    @GetMapping(path = "/v1/persons")
     public Map<String, Object> getPersons(
         @RequestParam(defaultValue = "false") boolean includingTasks) {
         if (includingTasks) {
@@ -35,7 +35,7 @@ public class PersonController {
         }
     }
 
-    @GetMapping("/persons/{personId}")
+    @GetMapping("/v1/persons/{personId}")
     public Map<String, Object> getPerson(@PathVariable Integer personId,
         @RequestParam(defaultValue = "false") boolean includingTasks) {
         if (includingTasks) {
@@ -48,12 +48,12 @@ public class PersonController {
         }
     }
 
-    @PostMapping("/persons")
+    @PostMapping("v1/persons")
     public void createPerson(@RequestBody @Validated Person person) {
         personDTOService.createPerson(person);
     }
 
-    @DeleteMapping("/persons")
+    @DeleteMapping("v1/persons")
     public void deletePerson(@RequestBody Person person) {
         personDTOService.deletePerson(person);
     }
